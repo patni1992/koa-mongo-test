@@ -1,20 +1,20 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient } = require('mongodb')
 
-const urlMongo = 'mongodb://localhost:27017/koa-mongo-test';
+const urlMongo = 'mongodb://localhost:27017/koa-mongo-test'
 
-let db;
+let db
 
 function connectToServer() {
   MongoClient.connect(urlMongo, (err, client) => {
-    if (err) throw err;
+    if (err) throw err
 
-    console.log('connected');
-    db = client.db();
-  });
+    console.log('connected')
+    db = client.db()
+  })
 }
 
 function getDb() {
-  return db;
+  return db
 }
 
-module.exports = { connectToServer, getDb };
+module.exports = { connectToServer, getDb }

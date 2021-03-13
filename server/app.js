@@ -1,16 +1,16 @@
-const Koa = require('koa');
-const Router = require('@koa/router');
-const mongo = require('./db');
+const Koa = require('koa')
+const Router = require('@koa/router')
+const mongo = require('./db')
 
-mongo.connectToServer();
+mongo.connectToServer()
 
-const app = new Koa();
-const router = new Router();
+const app = new Koa()
+const router = new Router()
 
-router.get('/', async (ctx) => {
-  ctx.body = 'Hello';
-});
+router.get('/locations', async (ctx) => {
+  ctx.body = await mongo.getDb().collection('locations').find().toArray()
+})
 
-app.use(router.routes()).use(router.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods())
 
-app.listen(3000);
+app.listen(3000)
