@@ -4,5 +4,8 @@ function fetchLocations() {
   return client('locations')
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export { fetchLocations }
+function fetchLocation(id) {
+  return client(`locations/${id}`)
+}
+
+export { fetchLocations, fetchLocation }
