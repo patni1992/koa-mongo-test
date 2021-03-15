@@ -39,18 +39,6 @@ describe('Controller list page', () => {
     expect(controller).toHaveTextContent(address.city)
   })
 
-  it('should display address when rendering a controller', async () => {
-    render(
-      <MemoryRouter>
-        <ControllerList />
-      </MemoryRouter>
-    )
-    await waitFor(() => expect(screen.getByTestId(`controller-link-${controller1.controllerId}`)).toBeInTheDocument())
-    const controller = screen.getByTestId(`controller-link-${controller1.controllerId}`)
-    expect(controller).toHaveTextContent(address.street)
-    expect(controller).toHaveTextContent(address.zip)
-    expect(controller).toHaveTextContent(address.city)
-  })
   it('should display a link to detail page when rendering a controller', async () => {
     render(
       <MemoryRouter>
