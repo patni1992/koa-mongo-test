@@ -42,8 +42,8 @@ function ControllerList() {
     <Container>
       <Grid container spacing={3}>
         {controllers.map((row) => (
-          <Grid key={row.id} item xs={12} md={4}>
-            <Link className={link} to={`/controllers/${row.id}`}>
+          <Grid key={row.controllerId} item xs={12} md={4}>
+            <Link data-testid={`controller-link-${row.controllerId}`} className={link} to={`/controllers/${row.id}`}>
               <Card>
                 <CardContent>
                   <Typography variant="h5" component="h2">
