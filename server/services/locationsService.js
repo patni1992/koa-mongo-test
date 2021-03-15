@@ -14,9 +14,9 @@ async function getLocation(id) {
 }
 
 async function getLocations() {
-  const location = await getDb().collection('locations').find().toArray()
+  const locations = await getDb().collection('locations').find().toArray()
 
-  return location
+  return locations
 }
 
 module.exports = {
