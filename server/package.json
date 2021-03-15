@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "URI_MONGO=mongodb://localhost:27017/koa-mongo-test jest"
+    "test": "URI_MONGO=mongodb://localhost:27017/koa-mongo-test jest",
+    "dev": "nodemon server"
   },
   "repository": {
     "type": "git",
