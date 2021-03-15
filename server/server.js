@@ -6,6 +6,9 @@ const port = process.env.PORT || 1337
 
 dotenv.config()
 
-const listen = () => app.listen(port)
+const listen = () => {
+  app.listen(port)
+  console.log(`server listen on port ${port}`)
+}
 
 connectDb().then(listen)
