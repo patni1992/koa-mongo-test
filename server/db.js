@@ -1,20 +1,18 @@
 const { MongoClient } = require('mongodb')
 
-const urlMongo = 'mongodb://localhost:27017/koa-mongo-test'
+const uriMongo = process.env.URI_MONGO || 'mongodb://localhost:27017/koa-mongo'
 
+const client = new MongoClient(uriMongo, { useUnifiedTopology: true })
 let db
 
-function connectToServer() {
-  MongoClient.connect(urlMongo, (err, client) => {
-    if (err) throw err
-
-    console.log('connected')
-    db = client.db()
-  })
+async function connectDb() {
+  const conn = await client.connect()
+  db = conn.db()
+  return client
 }
 
 function getDb() {
   return db
 }
 
-module.exports = { connectToServer, getDb }
+module.exports = { connectDb, getDb }

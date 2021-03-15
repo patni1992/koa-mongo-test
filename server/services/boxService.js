@@ -1,10 +1,9 @@
 const { ObjectId } = require('mongodb')
 const createError = require('http-errors')
-const mongo = require('../db')
+const { getDb } = require('../db')
 
 async function getBox(id) {
-  let box = await mongo
-    .getDb()
+  let box = await getDb()
     .collection('boxes')
     .aggregate([
       { $match: { _id: ObjectId(id) } },
@@ -26,8 +25,7 @@ async function getBox(id) {
   box.parcel = box.parcel.length ? box.parcel[0] : null
 
   if (box.parcel) {
-    const carrier = await mongo
-      .getDb()
+    const carrier = await getDb()
       .collection('carriers')
       .findOne({ _id: ObjectId(box.parcel.carrier) }, { projection: { username: true } })
 
